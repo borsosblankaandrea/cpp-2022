@@ -5,6 +5,7 @@
 #ifndef CPP_2022_POINT_H
 #define CPP_2022_POINT_H
 
+#include <iostream>
 
 class Point{
 private:

@@ -2,7 +2,7 @@
 // Created by ASUS on 2022. 09. 28..
 //
 #include "Point.h"
-
+using namespace std;
 
 Point::Point(int x, int y) {
     if (x >= 0 && x <= 2000 && y >= 0 && y <= 2000){
@@ -22,6 +22,6 @@ int Point::getY() const {
 }
 
 void Point::print() const{
-
+    cout << getX() << ' ' << getY() << endl;
 }
 
