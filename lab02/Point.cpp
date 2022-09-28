@@ -1,3 +1,6 @@
+//
+// Created by ASUS on 2022. 09. 28..
+//
 #include "Point.h"
 
 
@@ -21,3 +24,4 @@ int Point::getY() const {
 void Point::print() const{
 
 }
+

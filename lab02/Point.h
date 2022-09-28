@@ -1,6 +1,9 @@
+//
+// Created by ASUS on 2022. 09. 28..
+//
 
-#ifndef POINT_H
-#define POINT_H
+#ifndef CPP_2022_POINT_H
+#define CPP_2022_POINT_H
 
 
 class Point{
@@ -13,4 +16,5 @@ public:
     void print() const;
 };
 
-#endif /* PONT_H */
+
+#endif //CPP_2022_POINT_H
