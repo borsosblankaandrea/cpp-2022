@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 //    }
 
 
-    //testIsSquare("points.txt");
+    testIsSquare("points.txt");
     test_cereate();
 
     return 0;
@@ -47,8 +47,9 @@ void testIsSquare(const char * filename) {
     ifstream ifs(filename);
     if (!ifs) {
         cout << "File open error" << endl;
-        exit(0);
+        exit(1);
     }
+
 
     while(!ifs.eof()) {
         int x, y;
@@ -67,6 +68,20 @@ void testIsSquare(const char * filename) {
         if (isSquare(a, b, c, d)) cout << "YES" << endl;
         else cout << "NO" << endl;
     }
+
+//    int x, y;
+//    while(ifs >> x >> y) {
+//        Point a(x, y);
+//
+//        Point b(x, y);
+//
+//        Point c(x, y);
+//
+//        Point d(x, y);
+//
+//        if (isSquare(a, b, c, d)) cout << "YES" << endl;
+//        else cout << "NO" << endl;
+//    }
 
 }
 
