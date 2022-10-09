@@ -28,9 +28,13 @@ int main() {
     list1.print();
     cout << "Size: " << list1.size() << endl;
 
-//    cout << endl << "Remove first: " << endl;
-//    list1.removeFirst();
-//    list1.print();
+    cout << endl << "Remove first: " << endl;
+    try{
+        list1.removeFirst();
+    } catch (invalid_argument &error){
+        cout << error.what();
+    }
+    list1.print();
 
     return 0;
 }

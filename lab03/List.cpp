@@ -57,12 +57,54 @@ void List::insertFirst(int d) {
 }
 
 int List::removeFirst() {
+    if(this->empty()){
+        throw invalid_argument("Empty!");
+    }
 
-        Node *temp = first->next;
-        first = first->next;
-        delete temp;
+    Node *temp = first;
+    first = first->next;
+    int value = temp->value;
+    nodeCounter--;
+    delete temp;
 
-        this->nodeCounter--;
+    return value;
+
+}
+
+void List::remove(int d, List::DeleteFlag df) {
+    if(df == DeleteFlag::EQUAL){
+        for(Node *ptr = this->first; ptr->next != nullptr; ptr = ptr->next) {
+            if(ptr->next->value == d) {
+                Node *temp = ptr->next;
+                ptr = ptr->next->next;
+                nodeCounter--;
+                delete temp;
+            }
+        }
+    }
+
+    if(df == DeleteFlag::LESS){
+        for(Node *ptr = this->first; ptr->next != nullptr; ptr = ptr->next) {
+            if(ptr->next->value < d) {
+                Node *temp = ptr->next;
+                ptr = ptr->next->next;
+                nodeCounter--;
+                delete temp;
+            }
+        }
+    }
+
+    if(df == DeleteFlag::GREATER){
+        for(Node *ptr = this->first; ptr->next != nullptr; ptr = ptr->next) {
+            if(ptr->next->value > d) {
+                Node *temp = ptr->next;
+                ptr = ptr->next->next;
+                nodeCounter--;
+                delete temp;
+            }
+        }
+    }
+
 
 }
 
@@ -73,6 +115,8 @@ void List::print() const {
     }
     cout << ']' << endl;
 }
+
+
 
 
 

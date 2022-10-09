@@ -37,7 +37,7 @@ public:
         LESS, EQUAL, GREATER
     };
 
-    void remove(int d, DeleteFlag df = DeleteFlag::EQUAL);
+    void remove(int d, DeleteFlag df);
 
     /* prints the contents of this list */
     void print() const;
