@@ -1,11 +1,9 @@
 //
-// Created by ASUS on 2022. 09. 28..
+// Created by ASUS on 2022. 10. 12..
 //
 
 #ifndef CPP_2022_POINT_H
 #define CPP_2022_POINT_H
-
-#include <iostream>
 
 class Point{
 private:
@@ -14,7 +12,7 @@ public:
     Point(int x=0, int y=0);
     int getX() const;
     int getY() const;
-    void print() const;
+    double distanceTo(const Point& point)const ;
 };
 
 
