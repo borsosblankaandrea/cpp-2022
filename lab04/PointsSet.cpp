@@ -12,6 +12,7 @@ using namespace std;
 PointSet::PointSet(int n) {
     this->n = n;
 
+    //cppreference.com-rol
     random_device rd;  //Will be used to obtain a seed for the random number engine
     mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     uniform_int_distribution<> distrib(1, 2000);
