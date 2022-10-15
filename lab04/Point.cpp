@@ -4,7 +4,7 @@
 
 #include <valarray>
 #include "Point.h"
-#define M 2000
+
 
 Point::Point(int x, int y) {
     if (x >= 0 && x <= M && y >= 0 && y <= M){

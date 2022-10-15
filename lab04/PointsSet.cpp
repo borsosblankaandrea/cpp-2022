@@ -5,6 +5,7 @@
 #include <iostream>
 #include <random>
 #include <algorithm>
+#include <set>
 #include "PointsSet.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ PointSet::PointSet(int n) {
     //cppreference.com-rol
     random_device rd;  //Will be used to obtain a seed for the random number engine
     mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-    uniform_int_distribution<> distrib(1, 2000);
+    uniform_int_distribution<> distrib(0, M);
 
     while(points.size() < n){
         int x = distrib(gen), y = distrib(gen);
@@ -44,20 +45,47 @@ double PointSet::minDistance() const {
 }
 
 int PointSet::numDistances() const {
-    //hany kulonbozo tavolsag van ?
+    //hany kulonbozo tavolsag van
+    set<double> tempDistances;
+    for (int i = 0; i < distances.size(); ++i){
+        tempDistances.insert(distances[i]);
+    }
+
+    return tempDistances.size();
 }
 
 void PointSet::printPoints() const {
     for (int i = 0; i < this->n; ++i) {
-        cout << "[ " << points[i].getX() << ' ' << points[i].getY() << " ]" << endl;
+        cout << "[ " << points[i].getX() << ", " << points[i].getY() << " ]" << endl;
     }
 }
 
 void PointSet::printDistances() const {
     for (int i = 0; i < distances.size(); ++i) {
-        cout << distances[i] << ' ';
+        cout << distances[i] << "  ";
     }
 }
+
+bool compareX(Point p1, Point p2){
+    return (p1.getX() < p2.getX());
+}
+
+void PointSet::sortPointsX() {
+    sort(points.begin(), points.end(), compareX);
+}
+
+bool compareY(Point p1, Point p2){
+    return (p1.getY() < p2.getY());
+}
+
+void PointSet::sortPointsY() {
+    sort(points.begin(), points.end(), compareY);
+}
+void PointSet::sortDistances() {
+    sort(distances.begin(), distances.end());
+}
+
+
 
 
 

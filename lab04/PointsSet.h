@@ -4,6 +4,7 @@
 
 #ifndef CPP_2022_POINTSSET_H
 #define CPP_2022_POINTSSET_H
+#define M 2000
 
 #include "Point.h"
 #include <vector>

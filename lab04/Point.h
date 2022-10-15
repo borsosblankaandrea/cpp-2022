@@ -4,6 +4,7 @@
 
 #ifndef CPP_2022_POINT_H
 #define CPP_2022_POINT_H
+#define M 2000
 
 class Point{
 private:
