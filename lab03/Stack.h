@@ -9,20 +9,15 @@
 
 class Stack : public List{
 public:
+    Stack (int capacity);
     void push(int e);
     int pop();
     bool isEmpty() const;
 
 private:
-    int nodeCounter{0};
-    struct Node {
-        int value;
-        Node* next;
-
-        Node(int v, Node* n) : value(v), next(n) {
-        }
-    };
-    Node* last;
+    int capacity;
+    int *elements;
+    int *top;
 
 };
 

@@ -4,27 +4,32 @@
 
 #include "Stack.h"
 
+
+Stack::Stack(int capacity) {
+    this->capacity = capacity;
+    elements = new int(capacity);
+    top = elements;
+}
+
 void Stack::push(int e) {
-    last->next = new Node(e, nullptr);
-    last = last->next;
-    this->nodeCounter++;
+    //if not full
+    *top = e;
+    top++;
 }
 
 int Stack::pop() {
-//    if(this->isEmpty()){
-//        throw invalid_argument("Empty!");
-//    }
-
-    ///utolso visszaillitasa az elotte levore ???
-
-    int value = last->value;
-    delete last;
-    this->nodeCounter--;
-
-    return value;
+    if(isEmpty()) {return -1;}
+    int temp = *top;
+    top = nullptr;
+    top--;
+    return temp;
+    //helyes igy?
 }
 
 bool Stack::isEmpty() const {
-    if (this->nodeCounter == 0) return true;
-    return false;
+    if (top == nullptr) return true; // ??
+    else return false;
 }
+
+
+
