@@ -27,6 +27,17 @@ public:
     friend Matrix operator+(const Matrix& x, const Matrix& y);
     friend Matrix operator*(const Matrix& x, const Matrix& y);
 
+    friend istream & operator>>(istream& is, Matrix& mat);
+    friend ostream & operator<<(ostream& os, const Matrix& mat);
+
+    // index operator
+    double* operator[] (int index);
+    // index operator that works on constant matrices!
+    double* operator[] (int index) const;
+
+    Matrix & operator=(const Matrix& mat);
+    //Matrix & operator=(Matrix&& mat);
+
 private:
 //Data
     double ** mElements;

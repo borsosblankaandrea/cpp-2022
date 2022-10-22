@@ -29,5 +29,12 @@ int main() {
         cout << e.what() << endl;
     }
 
+    try {
+        cout << "m1 * m2: " << endl << m1 * m2 << endl;
+    } catch (out_of_range& e) {
+        cout << e.what() << endl;
+    }
+
+
     return 0;
 }

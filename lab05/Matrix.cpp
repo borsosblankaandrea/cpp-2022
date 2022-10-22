@@ -118,6 +118,63 @@ Matrix operator*(const Matrix &x, const Matrix &y) {
 // 3 2 4   1 2 2 1
 // 1 3 2
 
+istream &operator>>(istream &is, Matrix &mat) {
+    is >> mat.mRows;
+    is >> mat.mCols;
+    for (int i = 0; i < mat.mRows; ++i) {
+        for (int j = 0; j < mat.mCols; ++j) {
+            is >> mat.mElements[i][j];
+        }
+    }
+
+    return is;
+}
+
+ostream &operator<<(ostream &os, const Matrix &mat) {
+    for (int i = 0; i < mat.mRows; ++i) {
+        for (int j = 0; j < mat.mCols; ++j) {
+            os << mat.mElements[i][j] << ' ';
+        }
+        os << endl;
+    }
+    return os;
+}
+
+double *Matrix::operator[](int index) {
+    return this->mElements[index];
+}
+
+double *Matrix::operator[](int index) const {
+    return this->mElements[index];
+}
+
+Matrix &Matrix::operator=(const Matrix &mat) {
+
+    if (this->mRows != mat.mRows || this->mCols != mat.mCols) {
+        throw out_of_range("Out of range!");
+    }
+
+    for (int i = 0; i < this->mRows; ++i) {
+        for (int j = 0; j < this->mCols; ++j) {
+            this->mElements[i][j] = mat.mElements[i][j];
+        }
+    }
+
+    return *this;
+}
+//
+//Matrix &Matrix::operator=(Matrix &&mat) {
+//    if (this->mRows != mat.mRows || this->mCols != mat.mCols) {
+//        throw out_of_range("Out of range!");
+//    }
+//
+//    for (int i = 0; i < this->mRows; ++i) {
+//        this->mElements[i] = mat.mElements[i]; /// ?
+//    }
+//
+//    /// return <#initializer#>; ?
+//}
+
 Matrix::~Matrix() {
     for (int i = 0; i < this->mRows; ++i) {
         delete[] this->mElements[i];
@@ -127,6 +184,18 @@ Matrix::~Matrix() {
     this->mCols = 0;
     this->mRows = 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -8,6 +8,7 @@
 
 #include "Point.h"
 #include <vector>
+
 using namespace std;
 class PointSet{
     //különböző pontok
