@@ -5,6 +5,7 @@
 #include <valarray>
 #include "Point.h"
 
+int Point::counter{0};
 
 Point::Point(int x, int y) {
     if (x >= 0 && x <= M && y >= 0 && y <= M){
@@ -15,6 +16,7 @@ Point::Point(int x, int y) {
         this->x = 0;
         this->y = 0;
     }
+    counter++;
 }
 
 int Point::getX() const {
@@ -27,5 +29,14 @@ int Point::getY() const {
 double Point::distanceTo(const Point &point) const {
     return sqrt(pow(point.getX() - this->x, 2) + pow(point.getY() - this->y, 2));
 }
+
+Point::Point(const Point &point) {
+    this->x = point.x;
+    this->y = point.y;
+    counter++;
+}
+
+
+
 
 
