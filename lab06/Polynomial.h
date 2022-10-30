@@ -30,11 +30,11 @@ public:
     // Polinom deriváltja
     Polynomial derivative() const;
 
-    //double operator[](int index) const;
-    //friend Polynomial operator -(const Polynomial &a);
-    //friend Polynomial operator +(const Polynomial &a, const Polynomial &b);
-    //friend Polynomial operator -(const Polynomial &a, const Polynomial &b);
-    //friend Polynomial operator *(const Polynomial &a, const Polynomial &b);
+    double operator[](int index) const;
+    friend Polynomial operator -(const Polynomial &a);
+    friend Polynomial operator +(const Polynomial &a, const Polynomial &b);
+    friend Polynomial operator -(const Polynomial &a, const Polynomial &b);
+    friend Polynomial operator *(const Polynomial &a, const Polynomial &b);
     friend ostream & operator <<(ostream& out, const Polynomial& what);
     /* copy assignment - mély másolat letiltása értékadásra nézve */
     Polynomial& operator=(const Polynomial&) = delete;

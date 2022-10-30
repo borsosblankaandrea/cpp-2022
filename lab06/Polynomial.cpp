@@ -63,4 +63,75 @@ Polynomial Polynomial::derivative() const {
     return der;
 }
 
+double Polynomial::operator[](int index) const {
+    if (index > capacity) {
+        throw out_of_range("Index out of range");
+    }
+    return this->coefficients[index];
+}
+
+Polynomial operator-(const Polynomial &a) {
+    for (int i = 0; i < a.capacity; ++i) {
+        a.coefficients[i] *= -1;
+    }
+    Polynomial temp(a.capacity - 1, a.coefficients);
+    return temp;
+}
+
+Polynomial operator+(const Polynomial &a, const Polynomial &b) {
+    double degree, *array;
+    if (a.capacity > b.capacity) {
+        array = a.coefficients;
+        degree = a.degree();
+
+        for (int i = 0; i < b.capacity; ++i) {
+            array[b.capacity - i] += b.coefficients[b.capacity - i - 1];
+        }
+    }
+    else {
+        array = b.coefficients;
+        degree = b.degree();
+
+        for (int i = 0; i < a.capacity; ++i) {
+            array[a.capacity - i] += a.coefficients[a.capacity - i - 1];
+        }
+    }
+    Polynomial temp(degree, array);
+    return temp;
+}
+
+Polynomial operator-(const Polynomial &a, const Polynomial &b) {
+    double degree, *array;
+    if (a.capacity > b.capacity) {
+        array = a.coefficients;
+        degree = a.degree();
+        for (int i = 0; i < b.capacity; ++i) {
+            array[b.capacity - i] -= b.coefficients[b.capacity - i - 1];
+        }
+    }
+    else {
+        array = b.coefficients;
+        degree = b.degree();
+
+        for (int i = 0; i < a.capacity; ++i) {
+            array[a.capacity - i] -= a.coefficients[a.capacity - i - 1];
+        }
+    }
+    Polynomial temp(degree, array);
+    return temp;
+}
+
+Polynomial operator*(const Polynomial &a, const Polynomial &b) {
+    int capacity = a.capacity + b.capacity - 1;
+    double *array = new double[capacity]{0};
+    for (int i = a.capacity; i > 0; --i) {
+        for (int j = b.capacity; j > 0; --j) {
+            array[i + j - 2] = array[i + j - 2] + a.coefficients[i - 1] * b.coefficients[j - 1];
+        }
+    }
+    Polynomial temp(capacity - 1, array);
+    return temp;
+}
+
+
 
