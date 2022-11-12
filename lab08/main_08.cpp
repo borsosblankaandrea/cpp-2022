@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <string.h>
 #include <utility>
+#include <cctype>
+#include <algorithm>
+#include <iomanip>
+#include <random>
 
 using namespace std;
 
@@ -120,10 +125,56 @@ int main() {
         return abs(a) < abs(b);
     });
 
-
+    cout << "Abszolut ertek szerint rendezve: ";
     for_each(v7.begin(), v7.end(), [](const double& e){
         cout << e << ' ';
     });
 
+    /// 8. feladat
+    cout << "\n8. feladat: \n";
 
+//    for_each(months.begin(), months.end(), [](const string e){
+//        cout << "\t" << e << endl;
+//    });
+
+    cout << "\tA honapok atirva kisbetusre: \n";
+//    for_each(months.begin(), months.end(), [](string e){
+//        transform(e.cbegin(), e.cend(), e.begin(), [](unsigned char c){
+//            return tolower(c);
+//        });
+//        cout << "\t" << e << endl; /// ha kulon iratom ki, nem marad kisbetusen
+//    });
+
+    for_each(months.begin(), months.end(), [](string &e){
+                 e[0] = tolower(e[0]);
+             });
+
+    for_each(months.begin(), months.end(), []( string e){
+        cout << "\t" << e << endl;
+    });
+
+    /// 9. feladat
+    cout << "9. feladat: \n\t";
+
+    vector<char> alphabet{
+            'a','b','c','d','e','f',
+            'g','h','i','j','k','l','m','n','o','p',
+            'q','r','s','t','u','v','w','x','y','z'
+    };
+
+    shuffle(alphabet.begin(), alphabet.end(), mt19937(random_device()()));
+
+    cout << "Az abc megkeverve: ";
+    for_each(alphabet.begin(),alphabet.end(), [](const char e){
+       cout << e << ' ';
+    });
+
+    sort(months.begin(),months.end(),[alphabet](const auto &month1, const auto &month2){
+        return distance(alphabet.begin(), find(alphabet.begin(),alphabet.end(), month1[0])) < distance(alphabet.begin(), find(alphabet.begin(),alphabet.end(), month2[0]));
+    });
+
+    cout << "\n\tA honapok a kevert abc szerint rendezve:\n";
+    for_each(months.begin(), months.end(), []( string e){
+        cout << "\t" << e << endl;
+    });
 }
