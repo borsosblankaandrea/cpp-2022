@@ -13,11 +13,12 @@ using namespace std;
 
 class Manager: public Alkalmazott{
 public:
+    //static const string MANAGER_MUNKAKOR;
     Manager(const string &firstName, const string &lastName, int birthYear, const string &munkakor);
     void addAlkalmazott(Alkalmazott *alkalmazott);
-    void deleteAlkalmazott(Alkalmazott *alkalmazott);
-    int beosztottakSzama();
-    virtual void print(ostream &os) const;
+    void deleteAlkalmazott(int id);
+    int beosztottakSzama() const;
+    void print(ostream &os) const override;
 
 private:
     vector<Alkalmazott*> beosztottak;

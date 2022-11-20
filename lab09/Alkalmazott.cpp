@@ -13,13 +13,18 @@ Alkalmazott::Alkalmazott(const string &firstName, const string &lastName, int bi
 }
 
 void Alkalmazott::print(ostream &os) const {
+    os << this->id << ".: ";
     Szemely::print(os);
     os << " " << this->munkakor << endl;
 }
 
 
-int Alkalmazott::getID() {
+int Alkalmazott::getID() const {
     return this->id;
+}
+
+const string &Alkalmazott::getMunkakor() const {
+    return this->munkakor;
 }
 
 

@@ -15,7 +15,9 @@ class Alkalmazott: public Szemely{
 public:
     Alkalmazott(const string &firstName, const string &lastName, int birthYear, const string &munkakor);
     virtual void print(ostream &os) const;
-    int getID();
+    int getID() const;
+
+    const string &getMunkakor() const;
 
 protected:
     string munkakor;
