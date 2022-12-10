@@ -58,5 +58,22 @@ int main() {
 
     cout << "Num Settlements: " << statistics->numSettlements() << endl;
     cout << "Num County: " << statistics->numCounties() << endl;
+    cout << "Num settlements by county: " << statistics->numSettlementsByCounty("MS") << endl;
+    cout << "Find settlements by county: " << endl;
+    vector<Settlement> vector1 = statistics->findSettlementsByCounty("MS") ;
+    for( auto &item: vector1){
+        cout <<"\t" << item << endl;
+    }
+
+    cout << "Find settlements by name: " << endl;
+    vector<Settlement> vector2 = statistics->findSettlementsByName("Dobra") ;
+    for( auto &item: vector2){
+        cout <<"\t" << item << endl;
+    }
+
+    cout << "Find settlement by name and county: \n\t" << statistics->findSettlementsByNameAndCounty("Dobra","MS")<<endl;
+
+    cout << "Max population: \n\t" << statistics->maxPopulationDensity() << endl;
+    cout << "Min population: \n\t" << statistics->minPopulationDensity() << endl;
     return 0;
 }

@@ -20,27 +20,68 @@ int SettlementStatisticImpl::numCounties() const {
 }
 
 int SettlementStatisticImpl::numSettlementsByCounty(const string &county) const {
-    return 0;
+    int counter = 0;
+    for( auto &item: this->data){
+        if(item.second.getCounty() == county) counter++;
+    }
+
+    return counter;
 }
 
 vector<Settlement> SettlementStatisticImpl::findSettlementsByCounty(const string &county) const {
-    return vector<Settlement>();
+    vector<Settlement> vector1;
+    for( auto &item: this->data){
+        if(item.second.getCounty() == county){
+            vector1.emplace_back(item.second);
+        }
+    }
+
+    return vector1;
 }
 
 Settlement SettlementStatisticImpl::findSettlementsByNameAndCounty(const string &name, const string &county) const {
-    return Settlement();
+    for( auto &item: this->data){
+        if(item.second.getCounty() == county){
+            if(item.second.getName() == name){
+                return item.second;
+            }
+        }
+    }
 }
 
 Settlement SettlementStatisticImpl::maxPopulationDensity() const {
-    return Settlement();
+    Settlement maxi;
+    maxi.setPopulation(INT_MIN);
+    for( auto &item: this->data){
+        if(item.second.getPopulation() > maxi.getPopulation()){
+            maxi = item.second;
+        }
+    }
+
+    return maxi;
 }
 
 Settlement SettlementStatisticImpl::minPopulationDensity() const {
-    return Settlement();
+    Settlement mini;
+    mini.setPopulation(INT_MAX);
+    for( auto &item: this->data){
+        if(item.second.getPopulation() < mini.getPopulation()){
+            mini = item.second;
+        }
+    }
+
+    return mini;
 }
 
 vector<Settlement> SettlementStatisticImpl::findSettlementsByName(const string &name) {
-    return vector<Settlement>();
+    vector<Settlement> vector1;
+    for( auto &item: this->data){
+        if(item.second.getName() == name){
+            vector1.emplace_back(item.second);
+        }
+    }
+
+    return vector1;
 }
 
 SettlementStatisticImpl::SettlementStatisticImpl(const string &fileName) {
